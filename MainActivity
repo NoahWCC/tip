@@ -1,0 +1,38 @@
+package com.example.androidsample
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+
+import com.example.androidsample.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+
+    fun TipIncreases(view: View) {
+
+        if (binding.input.text.isNotEmpty()) {
+
+            val Amount = binding.input.text.toString().toFloat()
+
+            val Result1 = Amount * 1.1
+            val Result2 = Amount * 1.15
+            val Result3 = Amount * 1.2
+
+            binding.textView1.text = "A 10% tip will make the total " + Result1.toString().toFloat() + " Dollars \n" +
+                                    "A 15% tip will make the total " + Result2.toString().toFloat() + " Dollars\n" +
+                                    "A 20% tip will make the total " + Result3.toString().toFloat() + " Dollars"
+        } else {
+            binding.textView1.text = "Please enter amount"
+        }
+    }
+}
